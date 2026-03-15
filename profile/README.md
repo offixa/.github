@@ -5,54 +5,64 @@
 <p align="center">Deterministic document engines for developers.</p>
 
 <p align="center">
-  <a href="https://offixa.dev">Website</a> · <a href="https://docs.offixa.dev">Docs</a> · <a href="https://github.com/offixa-projects">GitHub</a>
+  <a href="https://github.com/offixa">GitHub</a>
 </p>
 
 ---
 
 ## What is OFFIXA?
 
-OFFIXA provides a suite of open-source engines for building, transforming, and rendering documents with **deterministic, reproducible output** — every time, on every platform.
-
-No layout drift. No rendering surprises. Pixel-perfect documents from code.
+OFFIXA builds deterministic document engines. Same input, same output — byte for byte, every time, on every platform.
 
 ## Products
 
-| | Product | Description |
+| Product | Description | |
 |---|---|---|
-| **📄** | [**PDFixa Core**](https://github.com/offixa/pdfixa-core) | The foundational engine — parse, build, and render PDFs programmatically. |
-| **📦** | [**PDFixa Examples**](https://github.com/offixa/pdfixa-examples) | Ready-to-run templates and recipes: invoices, reports, contracts, and more. |
-| **⚡** | [**PDFixa Pro**](https://github.com/offixa-projects/pdfixa-pro) | Advanced features — digital signatures, form filling, batch processing, and enterprise tooling. |
+| **PDFixa Core** | Zero-dependency PDF engine for Java 17+. Deterministic, reproducible output. | [Repository](https://github.com/offixa/PDFixa) |
+| **PDFixa Examples** | 10 runnable examples — invoices, reports, multi-language docs, Spring Boot integration. | [Repository](https://github.com/offixa/pdfixa-examples) |
+| **PDFixa Pro** | Full Unicode rendering, font embedding & subsetting, advanced layout engine. | Coming soon |
 
 ## Start here
 
-**New to OFFIXA?** Follow these steps:
+1. **Clone the examples** and run your first PDF in under a minute:
 
-1. **Explore** — Browse [PDFixa Examples](https://github.com/offixa-projects/pdfixa-examples) for real-world use cases.
-2. **Install** — Add PDFixa Core to your project and generate your first document.
-3. **Go further** — Unlock advanced workflows with PDFixa Pro.
+```
+git clone https://github.com/offixa/pdfixa-examples.git
+cd pdfixa-examples
+mvn -pl hello-world exec:java -Dexec.mainClass="example.HelloWorldExample"
+```
+
+2. **Add the dependency** to your own project:
+
+```xml
+<dependency>
+    <groupId>io.offixa</groupId>
+    <artifactId>pdfixa-core</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 ## Quick example
 
 ```java
-PdfDocument doc = PdfDocument.builder()
-    .page(Page.a4()
-        .add(Text.of("Hello from OFFIXA")
-            .fontSize(24)
-            .bold())
-        .add(Text.of("Deterministic. Reproducible. Every time.")
-            .fontSize(12)
-            .color("#6B7280")))
-    .build();
+PdfDocument doc = new PdfDocument();
+PdfPage page = doc.addPage();
 
-doc.save("hello.pdf");
+page.drawTextBox(
+    72, 760, 468, 16,
+    "Helvetica-Bold", 18,
+    "Hello from PDFixa!"
+);
+
+try (var out = new FileOutputStream("hello.pdf")) {
+    doc.save(out);
+}
 ```
 
-## Links
+## Repositories
 
-- 🌐 [offixa.dev](https://offixa.dev) — Official website
-- 📖 [docs.offixa.dev](https://docs.offixa.dev) — Documentation
-- 💬 [Discussions](https://github.com/orgs/offixa-projects/discussions) — Ask questions and share ideas
+- [**offixa/PDFixa**](https://github.com/offixa/PDFixa) — Core engine
+- [**offixa/pdfixa-examples**](https://github.com/offixa/pdfixa-examples) — Runnable examples
 
 ---
 
