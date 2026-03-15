@@ -20,8 +20,8 @@ No layout drift. No rendering surprises. Pixel-perfect documents from code.
 
 | | Product | Description |
 |---|---|---|
-| **📄** | [**PDFixa Core**](https://github.com/offixa-projects/pdfixa-core) | The foundational engine — parse, build, and render PDFs programmatically. |
-| **📦** | [**PDFixa Examples**](https://github.com/offixa-projects/pdfixa-examples) | Ready-to-run templates and recipes: invoices, reports, contracts, and more. |
+| **📄** | [**PDFixa Core**](https://github.com/offixa/pdfixa-core) | The foundational engine — parse, build, and render PDFs programmatically. |
+| **📦** | [**PDFixa Examples**](https://github.com/offixa/pdfixa-examples) | Ready-to-run templates and recipes: invoices, reports, contracts, and more. |
 | **⚡** | [**PDFixa Pro**](https://github.com/offixa-projects/pdfixa-pro) | Advanced features — digital signatures, form filling, batch processing, and enterprise tooling. |
 
 ## Start here
